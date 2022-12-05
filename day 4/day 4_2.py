@@ -7,7 +7,7 @@ def fullAsignmentCounter(input):
         line = line.split(',')
         first = line[0].split('-')
         second = line[1].split('-')
-        fullAsigCount = fullAsigCount+1 if (( int(first[0]) <= int(second[0]) and int(first[1]) >= int(second[1])) or (int(first[0]) >= int(second[0]) and int(first[1]) <= int(second[1]))) else fullAsigCount
+        fullAsigCount = fullAsigCount if(int(first[1])<int(second[0]) or int(second[1])<int(first[0])) else fullAsigCount+1
     return fullAsigCount
 
 if '__main__' == __name__:
