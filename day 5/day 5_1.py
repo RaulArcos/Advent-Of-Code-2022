@@ -21,6 +21,7 @@ def crates_state(input):
     cratesrow = []
     crates = []
     cratesinv = []
+   
 
     stacknum = get_num_columns(inputlines)
     altnum = get_num_rows(inputlines)
@@ -48,19 +49,31 @@ def crates_state(input):
             y-=1
         cratesinv.append(cratesrow)
         cratesrow = []
-    return cratesinv
+    print(cratesinv)
+    return cratesinv    
             
 def rearrangement_procedure(input):
+    solution = []
     crates = crates_state(input)
     input = open(input, 'r')
     inputlines = input.readlines()
     for line in inputlines:
         line = line.split(" ")
         if("move" in line):
-
-
-
-
+            print(line)
+            for x in range(int(line[1])):
+                n = get_num_rows(inputlines)-1
+                while(n >= 0):
+                    if(crates[(int(line[3])-1)][n] != 0):
+                        crates[(int(line[5])-1)][n] = crates[(int(line[3])-1)][n]
+                        crates[(int(line[3])-1)][n] = 0
+                        n = -1
+                    else:
+                        n-=1
+                
+    for x in crates:
+        solution.append(crates[x][0])
+    return solution
 
 if '__main__' == __name__:
     print("Combinación final = ", rearrangement_procedure("inputtest.txt"))
